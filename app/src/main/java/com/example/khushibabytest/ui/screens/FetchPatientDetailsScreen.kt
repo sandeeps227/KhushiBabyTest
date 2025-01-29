@@ -15,6 +15,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.khushibabytest.R
 import com.example.khushibabytest.ui.event.UIResult
 import com.example.khushibabytest.ui.viewmodels.PatientVisitViewModel
+import kotlinx.coroutines.delay
 
 @Composable
 fun FetchPatientDetailsScreen(
@@ -73,6 +74,7 @@ fun FetchPatientDetailsScreen(
                         isLoading = true // Set loading state
                         isButtonClicked = true
                         viewModel.fetchPatientDetails(healthId)
+                        errorMessage = null
                     }
                 },
                 modifier = Modifier
@@ -85,13 +87,14 @@ fun FetchPatientDetailsScreen(
             // Handle the result after the button click
 
             LaunchedEffect(patientDetails, isButtonClicked) {
+                delay(500)
                 if (isButtonClicked) {
                     when (patientDetails) {
                         is UIResult.Success -> {
                             isLoading = false // Reset loading state
                             Toast.makeText(
                                 context,
-                                context.getString(R.string.fetch_successful),
+                                "Fetch Successful",
                                 Toast.LENGTH_LONG
                             ).show()
                             onNavigateToVisitDetails(healthId)
@@ -101,19 +104,28 @@ fun FetchPatientDetailsScreen(
                             isLoading = false // Reset loading state
                             val exception = (patientDetails as UIResult.Failure).exception
                             // Display error message
-                                Toast.makeText(
-                                    context,
-                                    "No Details Found: ${exception.message}",
-                                    Toast.LENGTH_LONG
-                                ).show()
+                            if (exception.message != "exception") { // Ignore the initial state
+                                Toast.makeText(context, "No Details Found: ${exception.message}", Toast.LENGTH_LONG).show()
+                            }
                         }
+
                     }
+
                 }
             }
 
             // Show loading indicator if fetching
             if (isLoading) {
                 CircularProgressIndicator(modifier = Modifier.padding(16.dp))
+            }
+
+            // Error Message Display
+            errorMessage?.let {
+                Text(
+                    text = it,
+                    color = MaterialTheme.colors.error,
+                    modifier = Modifier.padding(top = 8.dp)
+                )
             }
         }
     }

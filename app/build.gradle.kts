@@ -76,6 +76,10 @@ dependencies {
     ksp(libs.androidx.room.compiler)
     implementation(libs.retrofit)
     implementation(libs.androidx.navigation.compose)
-
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.mockito.inline)
+    testImplementation(libs.kotlinx.coroutines.test)
+    implementation(kotlin("test"))
 
 }
