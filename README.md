@@ -1,4 +1,4 @@
-An app made for patient management built on MVVM, Jetpack compose, Room for offline storage as offline first strategy and sync data to server when network is available.
+An app made for patient management built as offline first strategy and sync data to server when network is available.
 
 Home Screen consisting of two buttons for new patient to register or existing/returning patients to get their details.
 
@@ -13,3 +13,13 @@ On successful saving of visit details user will be redirected to prescription su
 button below.
 
 Mock buttons are provided for printing and sharing details.
+
+
+Tech Stack:
+Jetpack compose,
+Room,
+WorkManager,
+Coroutines,
+Flows,
+MVVM Architecture,
+Hilt and Version Catalogs for easier understanding of dependencies
