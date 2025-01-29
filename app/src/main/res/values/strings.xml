@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">KhushiBabyTest</string>
     <string name="registration_error_msg">Please fill out the required fields</string>
+    <string name="fetch_successful">Fetch Successful</string>
 </resources>

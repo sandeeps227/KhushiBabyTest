@@ -24,12 +24,12 @@ interface PatientDao {
     @Query("SELECT * FROM patient_visits WHERE synced = 0")
     suspend fun getUnsyncedVisits(): List<PatientVisit>
 
-    @Query("UPDATE patient_visits SET synced = 1 WHERE id = :visitId")
+    @Query("UPDATE patient_visits SET synced = 1 WHERE patientId = :visitId")
     suspend fun markAsSynced(visitId: Int)
 
-    @Query("UPDATE patient_visits SET completed = 1 WHERE id = :visitId")
+    @Query("UPDATE patient_visits SET completed = 1 WHERE patientId = :visitId")
     suspend fun markVisitAsCompleted(visitId: Int)
 
-    @Query("SELECT * FROM patient_visits WHERE patientId = :healthId")
+    @Query("SELECT * FROM patient_visits WHERE patientId = :healthId ORDER BY visitDate DESC LIMIT 1")
     suspend fun getVisitById(healthId: String): PatientVisit
 }

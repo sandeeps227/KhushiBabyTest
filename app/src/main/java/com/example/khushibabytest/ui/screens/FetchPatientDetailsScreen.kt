@@ -89,6 +89,11 @@ fun FetchPatientDetailsScreen(
                     when (patientDetails) {
                         is UIResult.Success -> {
                             isLoading = false // Reset loading state
+                            Toast.makeText(
+                                context,
+                                context.getString(R.string.fetch_successful),
+                                Toast.LENGTH_LONG
+                            ).show()
                             onNavigateToVisitDetails(healthId)
                         }
 
@@ -101,7 +106,6 @@ fun FetchPatientDetailsScreen(
                                     "No Details Found: ${exception.message}",
                                     Toast.LENGTH_LONG
                                 ).show()
-                            // onNavigateToPatientRegistration()
                         }
                     }
                 }
