@@ -14,6 +14,8 @@ button below.
 
 Mock buttons are provided for printing and sharing details.
 
+Added Unit Test Cases for ViewModel and Repository.
+
 
 Tech Stack:
 Jetpack compose,
