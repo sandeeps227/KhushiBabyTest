@@ -16,6 +16,10 @@ Mock buttons are provided for printing and sharing details.
 
 Added Unit Test Cases for ViewModel and Repository.
 
+Enabled code shrinking and obfuscation in gradle.
+
+SQLCipher can be used to encrypt db if required which requires a secure key to be fetched from api as hardcoded key is not a good practice we have not used SQLCipher for now.
+
 
 Tech Stack:
 Jetpack compose,
